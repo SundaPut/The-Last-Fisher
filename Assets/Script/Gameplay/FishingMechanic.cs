@@ -19,10 +19,12 @@ public class FishingMechanic : MonoBehaviour
     public int maxSliderValue = 100;
     public QuickTimeEvent qteManager;
 
-    [Header("Fishing Line Settings")]
-    public Transform fishPoint;
+    [Header("Fishing Line")]
     public GameObject fishingLinePrefab;
-    public Transform waterTarget;
+    public Transform fishPoint; 
+    public Transform baitPoint;
+
+    private GameObject currentLine;
 
     private bool isFishing = false;
     private DifficultySettings currentDifficulty;
@@ -133,27 +135,19 @@ public class FishingMechanic : MonoBehaviour
 
     public void CastFishingLine()
     {
-        if (fishingLinePrefab == null || fishPoint == null || waterTarget == null) return;
+        if (fishingLinePrefab == null || fishPoint == null || baitPoint == null) return;
 
-        if (fishingLine == null)
-        {
-            GameObject lineObj = Instantiate(fishingLinePrefab, Vector3.zero, Quaternion.identity);
-            fishingLine = lineObj.GetComponent<LineRenderer>();
-        }
+        if (currentLine != null) Destroy(currentLine);
 
-        // set 2 titik awal
-        fishingLine.positionCount = 2;
-        fishingLine.SetPosition(0, fishPoint.position);
-        fishingLine.SetPosition(1, waterTarget.position);
+        currentLine = Instantiate(fishingLinePrefab, Vector3.zero, Quaternion.identity);
+
+        FishingLine line = currentLine.GetComponent<FishingLine>();
+        line.startPoint = fishPoint;
+        line.endPoint = baitPoint;
     }
 
     public void RemoveFishingLine()
     {
-        if (fishingLine != null)
-        {
-            Destroy(fishingLine.gameObject);
-            fishingLine = null;
-        }
+        if (currentLine != null) Destroy(currentLine);
     }
-
 }

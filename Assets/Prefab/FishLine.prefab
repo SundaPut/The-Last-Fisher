@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 457827113229522880}
   - component: {fileID: 5177029610232274304}
+  - component: {fileID: 4478644818553904942}
   m_Layer: 0
   m_Name: FishLine
   m_TagString: Untagged
@@ -145,3 +146,19 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &4478644818553904942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555111001885768831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69351ec5dda52ec478748db7669e1d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPoint: {fileID: 0}
+  endPoint: {fileID: 0}
+  segmentCount: 20
+  curveHeight: -1
